@@ -1,0 +1,28 @@
+# java
+
+*.class
+bin/
+out/
+target/
+
+# maven
+
+.mvn/
+mvnw.bat
+mvnw.cmd
+mvnw 
+
+# markdown file
+
+Help.md
+
+
+# vscode 
+
+.vscode/
+
+
+# IntelliJ
+
+*.iml
+.idea/
