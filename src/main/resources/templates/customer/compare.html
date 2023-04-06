@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>商品比较</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <div th:replace="~{customer/commons/csslinks::cssimport}"></div>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- fav -->
+    <link href="#" rel="shortcut icon">
+</head>
+<body>
+<!-- Header Start -->
+<div th:replace="~{customer/commons/header::header}"></div>
+<!-- Header End -->
+<div id="maincontainer">
+    <section id="product">
+        <div class="container">
+            <!--  breadcrumb -->
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#" th:href="@{index.html}">首页</a>
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">产品比较</li>
+            </ul>
+            <!-- Compare -->
+            <div class="row">
+                <!-- Compare Products-->
+                <div class="span12">
+                    <h1 class="heading1"><span class="maintext">Compare Prdoucts</span><span class="subtext"> Compare product from choice</span>
+                    </h1>
+                    <div class="cart-info">
+                        <table class="table table-striped table-bordered compare">
+                            <tbody>
+                            <tr>
+                                <td>Product</td>
+                                <td class="name"><a href="#">Jeans</a></td>
+                                <td class="name"><a href="#">Jeans</a></td>
+                                <td class="name"><a href="#">T-shirts</a></td>
+                            </tr>
+                            <tr>
+                                <td>Image</td>
+                                <td><img alt="" src="img/prodcut-40x40.jpg"></td>
+                                <td><img alt="" src="img/prodcut-40x40.jpg"></td>
+                                <td><img alt="" src="img/prodcut-40x40.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td>Price</td>
+                                <td> $105.00</td>
+                                <td> $40.00</td>
+                                <td> $200.00</td>
+                            </tr>
+                            <tr>
+                                <td>Model</td>
+                                <td>Levis</td>
+                                <td>Levis</td>
+                                <td>Levis</td>
+                            </tr>
+                            <tr>
+                                <td>Brand</td>
+                                <td>Levis</td>
+                                <td>Levis</td>
+                                <td>Levis</td>
+                            </tr>
+                            <tr>
+                                <td>Availability</td>
+                                <td>In Stock</td>
+                                <td>Out of Stock</td>
+                                <td>In Stock</td>
+                            </tr>
+                            <tr>
+                                <td>Rating</td>
+                                <td>
+                                    <ul class="rate">
+                                        <li class="on"></li>
+                                        <li class="on"></li>
+                                        <li class="on"></li>
+                                        <li class="on"></li>
+                                        <li class="off"></li>
+                                    </ul>
+                                    <br>
+                                    Based on 8 reviews.
+                                </td>
+                                <td>
+                                    <ul class="rate">
+                                        <li class="on"></li>
+                                        <li class="on"></li>
+                                        <li class="on"></li>
+                                        <li class="on"></li>
+                                        <li class="on"></li>
+                                    </ul>
+                                    <br>
+                                    Based on 4 reviews.
+                                </td>
+                                <td>
+                                    <ul class="rate">
+                                        <li class="on"></li>
+                                        <li class="on"></li>
+                                        <li class="on"></li>
+                                        <li class="off"></li>
+                                        <li class="off"></li>
+                                    </ul>
+                                    <br>
+                                    Based on 6 reviews.
+                                </td>
+                            </tr>
+                            <tr class="description">
+                                <td>Summary</td>
+                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                </td>
+                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                </td>
+                                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><a class="btn btn-orange pull-right " href="#">Add to Cart</a>
+                                    <a class="btn btn-orange pull-right mr10" href="#">Remove</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{customer/commons/footer::footer}"></div>
+
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<div th:replace="~{customer/commons/js::jsimport}"></div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>演出信息更新</title>
+    <link th:replace="~{admin/commons/csslinks::admincssimport}"/>
+</head>
+
+<body>
+<div id="wrapper">
+    <div th:replace="admin/commons/navbar::adminnavbar"></div>
+    <!--/. NAV TOP  -->
+    <div th:replace="admin/commons/sidebar::adminsidebar(active='updateProducts')"></div>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        更新产品页面，含有一个表单
+                        <small></small>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="col-lg-8 panel panel-default">
+                        <div class="panel-heading">
+                            修改用户信息
+                        </div>
+                        <div class="panel-body">
+                            <div class="row col-lg-12">
+                                <form action="" enctype="multipart/form-data" method="post"
+                                      th:action="@{/admin/submitUpdateProduct}">
+                                    <div class="form-group">
+                                        <span>产品ID</span>
+                                        <input class="form-control" name="id" readonly="readonly"
+                                               th:value="${products.id}">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>状态</span>
+                                        <input class="form-control" name="state" placeholder="Enter text"
+                                               th:value="${products.state}" type="number">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>类别</span>
+                                        <input class="form-control" name="pCategory"
+                                               placeholder="Enter text" th:value="${products.pCategory}">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>演出名</span>
+                                        <input class="form-control" name="pName" placeholder="Enter text"
+                                               th:value="${products.pName}">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>价格</span>
+                                        <input class="form-control" name="pPrice" placeholder="Enter text"
+                                               th:value="${products.pPrice}"
+                                               type="number">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>演出时间</span>
+                                        <input class="form-control" name="pShowTime" placeholder="Enter text"
+                                               th:value="${products.pShowTime}" type="date">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>演出地点</span>
+                                        <input class="form-control" name="pVenue" placeholder="Enter text"
+                                               th:value="${products.pVenue}">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>演出描述</span>
+                                        <input class="form-control" name="pDescription" placeholder="Enter text"
+                                               th:value="${products.pDescription}">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>图片</span>
+                                        <a href="#" th:href="@{${products.pPath}}">
+                                            <img alt="product" height="30"
+                                                 src="img/prodcut-40x40.jpg"
+                                                 th:src="@{'/4040' + ${products.pPath}}"
+                                                 title="product"
+                                                 width="30">
+                                        </a>
+                                    </div>
+                                    <div class="form-group">
+                                        <span>图片</span>
+                                        <input name="file" type="file">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>种类编号</span>
+                                        <input class="form-control" name="pKind" placeholder="Enter text"
+                                               th:value="${products.pKind}">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>库存量</span>
+                                        <input class="form-control" name="store" placeholder="Enter text"
+                                               th:value="${products.store}">
+                                    </div>
+                                    <button class="btn btn-default" type="submit">提交</button>
+                                </form>
+                                <!-- /.col-lg-6 (nested) -->
+
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+
+            <!-- /. ROW  -->
+            <footer>
+            </footer>
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+</div>
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<div th:replace="~{admin/commons/jsimport::adminjsimport}"></div>
+
+
+</body>
+
+</html>

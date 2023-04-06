@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>统计信息</title>
+    <link th:replace="~{admin/commons/csslinks::admincssimport}"/>
+</head>
+
+<body>
+<div id="wrapper">
+    <div th:replace="admin/commons/navbar::adminnavbar"></div>
+    <!--/. NAV TOP  -->
+    <div th:replace="admin/commons/sidebar::adminsidebar(active='statistics')"></div>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        统计信息
+                        <small></small>
+                    </h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="panel panel-primary text-center no-boder bg-color-green">
+                        <div class="panel-body">
+                            <i class="fa fa-bar-chart-o fa-5x"></i>
+                            <h3 th:text="${products} + '件'">8,457</h3>
+                        </div>
+                        <div class="panel-footer back-footer-green">
+                            现有商品
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="panel panel-primary text-center no-boder bg-color-blue">
+                        <div class="panel-body">
+                            <i class="fa fa-shopping-cart fa-5x"></i>
+                            <h3 th:text="'￥' + ${money}">1234</h3>
+                        </div>
+                        <div class="panel-footer back-footer-blue">
+                            已经获利
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="panel panel-primary text-center no-boder bg-color-red">
+                        <div class="panel-body">
+                            <i class="fa fa fa-comments fa-5x"></i>
+                            <h3 th:text="${messages} + '条'">15,823 </h3>
+                        </div>
+                        <div class="panel-footer back-footer-red">
+                            共收到反馈
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="panel panel-primary text-center no-boder bg-color-brown">
+                        <div class="panel-body">
+                            <i class="fa fa-users fa-5x"></i>
+                            <h3 th:text="${users}">36,752 </h3>
+                        </div>
+                        <div class="panel-footer back-footer-brown">
+                            现有用户数量
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+            </footer>
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+</div>
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<div th:replace="~{admin/commons/jsimport::adminjsimport}"></div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>会员信息修改</title>
+    <link th:replace="~{admin/commons/csslinks::admincssimport}"/>
+</head>
+
+<body>
+<div id="wrapper">
+    <div th:replace="admin/commons/navbar::adminnavbar"></div>
+    <!--/. NAV TOP  -->
+    <div th:replace="admin/commons/sidebar::adminsidebar(active='space')"></div>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        管理员设置
+                        <small>在这里修改管理员信息</small>
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="col-lg-8 panel panel-default">
+                        <div class="panel-heading">
+                            修改管理员信息
+                        </div>
+                        <div class="panel-body">
+                            <div class="row col-lg-12">
+                                <form action="" method="post" th:action="@{/admin/updateAdmin}">
+                                    <div class="form-group">
+                                        <span>用户ID</span>
+                                        <input class="form-control" name="id"
+                                               placeholder="Enter text" readonly="readonly"
+                                               th:value="${session.admin.id}">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>用户名</span>
+                                        <input class="form-control" name="username" placeholder="Enter text"
+                                               readonly="readonly"
+                                               th:value="${session.admin.username}">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>原来的密码</span> <span style="color: red; font-size: 2em"
+                                                                 th:text="${not #strings.isEmpty(message) ? message : '' }"></span>
+                                        <input class="form-control" name="password" placeholder="请输入原密码"
+                                               type="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>新密码</span>
+                                        <input class="form-control" id="newpass" name="newpass" placeholder="请输入新密码"
+                                               type="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>新密码确认</span><span id="newpasstest" style="color: red"></span>
+                                        <input class="form-control" id="newpass2" name="newpass2" placeholder="请确认新密码"
+                                               type="password">
+                                    </div>
+
+                                    <button class="btn btn-default" id="submit" type="submit">提交</button>
+                                </form>
+                                <!-- /.col-lg-6 (nested) -->
+
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /. ROW  -->
+            <footer>
+            </footer>
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+</div>
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<div th:replace="~{admin/commons/jsimport::adminjsimport}"></div>
+<script>
+
+    $("#newpass").blur(function () {
+        let newpass = $("#newpass").val();
+        let newpass2 = $("#newpass2").val();
+        if (newpass === newpass2) {
+            // 取消button的事件，显示信息
+            /*$("#submit").bind('click', function (e) {
+                e.preventDefault();
+            }, false)*/
+            $("#newpasstest").text("");
+            document.getElementById('submit').addEventListener('click', function (e) {
+                e.preventDefault();
+            }, false);
+        } else {
+            // 把原来的信息清楚，事件加回来，详见用户修改密码
+            $("#newpasstest").text("两次输入的密码不一致");
+            document.getElementById('submit').addEventListener('click', function (e) {
+                e.returnValue = true;
+            }, true)
+
+        }
+    });
+
+</script>
+
+</body>
+
+</html>

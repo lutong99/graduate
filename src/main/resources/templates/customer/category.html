@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>商品分类</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <div th:replace="~{customer/commons/csslinks::cssimport}"></div>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- fav -->
+    <link href="assets/ico/favicon.html" rel="shortcut icon">
+</head>
+<body>
+<!-- Header Start -->
+<div th:replace="~{customer/commons/header::header(active='category')}"></div>
+<!-- Header End -->
+
+<div id="maincontainer">
+    <section id="product">
+        <div class="container">
+            <!--  breadcrumb -->
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#" th:href="@{/index.html}">首页</a>
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">商品种类</li>
+            </ul>
+            <div class="row">
+                <!-- Sidebar Start-->
+                <aside class="span3">
+                    <!-- Category-->
+                    <div class="sidewidt">
+                        <h2 class="heading2"><span th:text="种类">Categories</span></h2>
+                        <input id="kind" name="kind" type="hidden"/>
+                        <ul class="nav nav-list categories">
+                            <li th:each="kind:${kinds}">
+                                <a href="#" th:class="getProductsByKind"
+                                   th:href="@{/getProductsByKind(kind=${kind.kId})}" th:text="${kind.kName}">Others</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--  Best Seller -->
+                    <div class="sidewidt">
+                        <h2 class="heading2"><span th:text="最受欢迎">Best Seller</span></h2>
+                        <ul class="bestseller">
+                            <li th:each="product:${session.productsHot}">
+                                <img alt="product" height="50" src="img/prodcut-40x40.jpg"
+                                     th:src="4040+${product.pPath}" title="product"
+                                     width="50">
+                                <a class="productname" href="#" th:href="@{/showDetails(id=${product.id})}"
+                                   th:text="${product.pName}">
+                                    Product Name</a>
+                                <span class="procategory" th:text="${product.pCategory}">Women Accessories</span>
+                                <span class="price" th:text="${product.pPrice}">$250</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Latest Product -->
+                    <div class="sidewidt">
+                        <h2 class="heading2"><span th:text="最新演出">Latest Products</span></h2>
+                        <ul class="bestseller">
+                            <li th:each="product:${session.productsHot}">
+                                <img alt="product" height="50" src="img/prodcut-40x40.jpg"
+                                     th:src="4040+${product.pPath}" title="product"
+                                     width="50">
+                                <a class="productname" href="#" th:href="@{/showDetails(id=${product.id})}"
+                                   th:text="${product.pName}"> Product Name</a>
+                                <span class="procategory" th:text="${product.pKind}">Women Accessories</span>
+                                <span class="price" th:text="${product.pPrice}">$250</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--  Must have -->
+                    <div class="sidewidt">
+                        <h2 class="heading2"><span th:text="为您推荐">Must have</span></h2>
+                        <div class="flexslider" id="mainslider">
+                            <ul class="slides">
+                                <li th:each="product:${session.productsExpensive}">
+                                    <img alt="" src="img/product1.jpg" th:src="product1+${product.pPath}"/>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+                <!-- Sidebar End-->
+                <!-- Category-->
+                <div class="span9">
+                    <!-- Category Products-->
+                    <section id="category">
+                        <div class="row">
+                            <div class="span9">
+                                <!-- Sorting-->
+                                <div class="sorting well">
+                                    <div class="btn-group pull-right">
+                                        <button class="btn" id="list"><i class="icon-th-list"></i>
+                                        </button>
+                                        <button class="btn btn-orange" id="grid"><i class="icon-th icon-white"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Category-->
+                                <section id="categorygrid">
+                                    <ul class="thumbnails grid showCategory">
+                                    </ul>
+                                    <ul class="thumbnails list row showCategory2">
+                                    </ul>
+                                    <div class="pagination pull-right">
+                                        <ul>
+                                            <input id="pageNo" name="pageNo" th:value="1" type="hidden"/>
+                                            <li><a href="#" th:id="prev" th:text="上一页">Prev</a>
+                                            </li>
+                                            <div id="pageBar">
+                                            </div>
+                                            <li><a href="#" th:id="next" th:text="下一页">Next</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{customer/commons/footer::footer}"></div>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<div th:replace="~{customer/commons/js::jsimport}"></div>
+]
+
+<script>
+    /*
+
+    */
+
+    $(function () {
+        var pageNo = 1;
+        $.get("getProductsByKind?kind=1", function (s) {
+            $(".showCategory").empty();
+            var parse = JSON.parse(s);
+            // var parse = p.lists;
+            for (var i = 0; i < 9; i++) {
+                $(".showCategory").append("<li class='span3'>" +
+                    "<a class='prdocutname' href='showDetails?id=" + parse[i].id + "' >" + parse[i].pVenue + " </a>"
+                    + "<div class='thumbnail'><span class='sale tooltip-test'>Sale</span>"
+                    + "<a href='product1" + parse[i].pPath + "'><img alt='' src='product1" + parse[i].pPath + "'></a>"
+                    + "<div class='shortlinks'><a class='details' href='showDetails?id=" + parse[i].id + "' > 详情 </a>"
+                    + "<a class='wishlist' href='addToWishList?id=" + parse[i].id + "' > 想要 </a>"
+                    + "<a class='compare' href='#'> " + parse[i].pCategory + " </a></div>"
+                    + "<div class='pricetag'><span class='spiral'></span>"
+                    + "<a class='productcart' href='addCart?id=" + parse[i].id + "' >加入购物车</a>"
+                    + "<div class='price'><div class='pricenew'>" + parse[i].pPrice + "</div>"
+                    + "<div class='priceold'>" + (parse[i].pPrice + parse[i].randomPrice) + "</div></div></div></div></li>");
+            }
+
+            $(".showCategory2").empty();
+            for (var i = 0; i < 9; i++) {
+                $(".showCategory2").append("<li> <div class='thumbnail'><div class='row'><div class='span3'> " +
+                    "<span class='offer tooltip-test'>Sale</span><a href='product1" + parse[i].pPath + "'><img alt='' src='product1" + parse[i].pPath + "'></a>" +
+                    "</div><div class='span6'><a class='prdocutname' href='showDetails?id=" + parse[i].id + "' >" + +"</a>" +
+                    "<div class='productdiscrption'>" + parse[i].pName + "</div>" +
+                    "<div class='pricetag'><span class='spiral'></span>" +
+                    "<a href='addCart?id=" + parse[i].id + "' class='productcart'>加入购物车</a><div class='price'><div class='pricenew'>" + parse[i].pPrice + "</div>" +
+                    "<div class='priceold'>" + (parse[i].pPrice + parse[i].randomPrice) + "</div></div></div><div class='shortlinks'>" +
+                    "<a class='details' href='showDetails?id=" + parse[i].id + "'>详情</a><a class='wishlist' href='addToWishList?id=" + parse[i].id + "'>想要</a>" +
+                    "<a class='compare' href='#'>" + parse[i].pCategory + "</a></div></div></div></div></li>");
+            }
+
+            $("#next").unbind("click");
+            $("#next").click(function () {
+                pageNo = pageNo + 1;
+                if (pageNo > 6) {
+                    alert("已经是最后一页了");
+                    return false;
+                }
+                changeProductsPage(pageNo, 9, parse);
+                return false;
+            });
+
+            $("#prev").unbind("click");
+            $("#prev").click(function () {
+                pageNo = pageNo - 1;
+                if (pageNo < 1) {
+                    alert("已经是第一页了");
+                    return false;
+                }
+                changeProductsPage(pageNo, 9, parse);
+                return false;
+            });
+        });
+        return false;
+    });
+
+
+    $(".getProductsByKind").click(function () {
+        var pageNo = 1;
+        $.get($(this).attr("href"), function (s) {
+            $(".showCategory").empty();
+            var parse = JSON.parse(s);
+            // var parse = p.lists;
+            for (var i = 0; i < 9; i++) {
+                $(".showCategory").append("<li class='span3'>" +
+                    "<a class='prdocutname' href='showDetails?id=" + parse[i].id + "' >" + parse[i].pVenue + " </a>"
+                    + "<div class='thumbnail'><span class='sale tooltip-test'>Sale</span>"
+                    + "<a href='product1" + parse[i].pPath + "'><img alt='' src='product1" + parse[i].pPath + "'></a>"
+                    + "<div class='shortlinks'><a class='details' href='showDetails?id=" + parse[i].id + "' > 详情 </a>"
+                    + "<a class='wishlist' href='addToWishList?id=" + parse[i].id + "' > 想要 </a>"
+                    + "<a class='compare' href='#'> " + parse[i].pCategory + " </a></div>"
+                    + "<div class='pricetag'><span class='spiral'></span>"
+                    + "<a class='productcart' href='addCart?id=" + parse[i].id + "' >加入购物车</a>"
+                    + "<div class='price'><div class='pricenew'>" + parse[i].pPrice + "</div>"
+                    + "<div class='priceold'>" + (parse[i].pPrice + parse[i].randomPrice) + "</div></div></div></div></li>");
+            }
+
+            $(".showCategory2").empty();
+            for (var i = 0; i < 9; i++) {
+                $(".showCategory2").append("<li> <div class='thumbnail'><div class='row'><div class='span3'> " +
+                    "<span class='offer tooltip-test'>Sale</span><a href='#'><img alt='' src='product1" + parse[i].pPath + "'></a>" +
+                    "</div><div class='span6'><a class='prdocutname' href='showDetails?id=" + parse[i].id + "'>" + parse[i].pVenue + "</a>" +
+                    "<div class='productdiscrption'>" + parse[i].pName + "</div>" +
+                    "<div class='pricetag'><span class='spiral'></span>" +
+                    "<a href='addCart?id=" + parse[i].id + "' class='productcart'>加入购物车</a><div class='price'><div class='pricenew'>" + parse[i].pPrice + "</div>" +
+                    "<div class='priceold'>" + (parse[i].pPrice + parse[i].randomPrice) + "</div></div></div><div class='shortlinks'>" +
+                    "<a class='details' href='showDetails?id=" + parse[i].id + "'>详情</a><a class='wishlist' href='addToWishList?id=" + parse[i].id + "'>想要</a>" +
+                    "<a class='compare' href='#'>" + parse[i].pCategory + "</a></div></div></div></div></li>");
+            }
+
+            $("#next").unbind("click");
+            $("#next").click(function () {
+                pageNo = pageNo + 1;
+                if (pageNo > 6) {
+                    alert("已经是最后一页了");
+                    return false;
+                }
+                changeProductsPage(pageNo, 9, parse);
+                return false;
+            });
+
+            $("#prev").unbind("click");
+            $("#prev").click(function () {
+                pageNo = pageNo - 1;
+                if (pageNo < 1) {
+                    alert("已经是第一页了");
+                    return false;
+                }
+
+                changeProductsPage(pageNo, 9, parse);
+                return false;
+            });
+        });
+        return false;
+    });
+
+    /*
+    <li class="active"><a href="#">1</a></li>
+     */
+    /*函数用来改变页码*/
+    function changeProductsPage(pageNo, pageSize, parse) {
+        $(".showCategory").empty();
+        // var parse = JSON.parse(s);
+        // var parse = p.lists;
+        var start = (pageNo - 1) * pageSize;
+        // var total = p.totalCount;
+        for (var i = start; i < start + pageSize; i++) {
+            $(".showCategory").append("<li class='span3'>" +
+                "<a class='prdocutname' href='showDetails?id=" + parse[i].id + "' >" + parse[i].pVenue + "</a>"
+                + "<div class='thumbnail'><span class='sale tooltip-test'>Sale</span>"
+                + "<a href='#'><img alt='' src='product1" + parse[i].pPath + "'></a>"
+                + "<div class='shortlinks'><a class='details' href='showDetails?id=" + parse[i].id + "' > 详情 </a>"
+                + "<a class='wishlist' href='addToWishList?id=" + parse[i].id + "'> 想要 </a>"
+                + "<a class='compare' href='#'> " + parse[i].pCategory + " </a></div>"
+                + "<div class='pricetag'><span class='spiral'></span>"
+                + "<a class='productcart' href='addCart?id=" + parse[i].id + "' >加入购物车</a>"
+                + "<div class='price'><div class='pricenew'>" + parse[i].pPrice + "</div>"
+                + "<div class='priceold'>" + (parse[i].pPrice + parse[i].randomPrice) + "</div></div></div></div></li>");
+        }
+
+        $(".showCategory2").empty();
+        for (var i = start; i < start + pageSize; i++) {
+            $(".showCategory2").append("<li> <div class='thumbnail'><div class='row'><div class='span3'> " +
+                "<span class='offer tooltip-test'>Sale</span><a href='#'><img alt='' src='product1" + parse[i].pPath + "'></a>" +
+                "</div><div class='span6'><a class='prdocutname' href='showDetails?id=" + parse[i].id + "' >" + parse[i].pVenue + "</a>" +
+                "<div class='productdiscrption'>" + parse[i].pName + "</div>" +
+                "<div class='pricetag'><span class='spiral'></span>" +
+                "<a href='addCart?id=" + parse[i].id + "' class='productcart'>加入购物车</a><div class='price'><div class='pricenew'>" + parse[i].pPrice + "</div>" +
+                "<div class='priceold'>" + (parse[i].pPrice + parse[i].randomPrice) + "</div></div></div><div class='shortlinks'>" +
+                "<a class='details' href='showDetails?id=" + parse[i].id + "'>详情</a><a class='wishlist' href='#'>想要</a>" +
+                "<a class='compare' href='#'>" + parse[i].pCategory + "</a></div></div></div></div></li>");
+        }
+    }
+
+</script>
+
+</body>
+</html>

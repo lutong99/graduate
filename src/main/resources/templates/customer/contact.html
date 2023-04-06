@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>提意见</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <div th:replace="~{customer/commons/csslinks::cssimport}"></div>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- fav -->
+    <link href="assets/ico/favicon.html" rel="shortcut icon">
+</head>
+<body>
+<!-- Header Start -->
+<div th:replace="~{customer/commons/header::header(active='contact')}"></div>
+<!-- Header End -->
+
+<div id="maincontainer">
+    <section id="product">
+        <div class="container">
+            <!--  breadcrumb -->
+            <ul class="breadcrumb">
+                <li>
+                    <a th:href="@{/index.html}">首页</a>
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">提意见</li>
+            </ul>
+            <!-- Contact Us-->
+            <h1 class="heading1"><span class="maintext">联系我们</span><span class="subtext"> 写下您的信息</span>
+            </h1>
+            <div class="row">
+                <div class="span9">
+                    <form class="form-horizontal" method="post" th:action="@{/commitMessage}">
+                        <fieldset>
+                            <div class="control-group">
+                                <label class="control-label" for="name">姓名：<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input id="name" name="name" placeholder="请输入姓名" type="text">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="email">邮箱：<span class="required">*</span></label>
+                                <div class="controls required">
+                                    <input id="email" name="email" placeholder="输入邮箱" type="email">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="url">种类：</label>
+                                <div class="controls required">
+                                    <input id="url" name="type" placeholder="在这里输入种类" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="message">详情：</label>
+                                <div class="controls">
+                                    <textarea cols="40" id="message" name="message" placeholder="请输入您的消息" required
+                                              rows="6"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <input class="btn btn-orange" id="submit_id" type="submit" value="提交">
+                                <input class="btn" type="reset" value="重置">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <!-- Sidebar Start-->
+                <div class="span3">
+                    <aside>
+                        <div class="sidewidt">
+                            <h2 class="heading2"><span>我们的联系方式</span></h2>
+                            <p> 电话：1235453232<br>
+                                公司地址：北京市北京东路43号<br><br><br>
+                                电话：(012) 333-7890<br>
+                                传真：(123) 444-7890<br>
+                                邮件：test@contactus.com<br>
+                                网站：yourcompanyname.com<br>
+                            </p>
+                        </div>
+                    </aside>
+                </div>
+                <!-- Sidebar End-->
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{customer/commons/footer::footer}"></div>
+
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<div th:replace="~{customer/commons/js::jsimport}"></div>
+</body>
+</html>

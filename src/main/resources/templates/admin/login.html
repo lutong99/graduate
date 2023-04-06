@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+    <title>在这里登陆</title>
+    <link href="./" rel="stylesheet" th:href="@{/admin/Wopop_files/style_log.css}" type="text/css">
+    <link href="./Wopop_files/style.css" rel="stylesheet" th:href="@{/admin/Wopop_files/style.css}" type="text/css">
+    <link href="./Wopop_files/userpanel.css" rel="stylesheet" th:href="@{/admin/Wopop_files/userpanel.css}"
+          type="text/css">
+
+</head>
+
+<body class="login" mycollectionplug="bind">
+<div class="login_m">
+    <div class="login_logo">
+        <h1 style="font-size: 3em;">欢迎来到登陆页面</h1>
+        <br>
+
+
+    </div>
+    <form action="" method="post" th:action="@{/adminLogin}">
+        <div class="login_boder">
+
+            <div class="login_padding" id="login_model">
+
+                <h2>用户名</h2>
+                <label>
+                    <input class="txt_input txt_input2" id="username" name="username"
+                           onblur="if (value ==&#39;&#39;){value=&#39;用户名&#39;}"
+                           onfocus="if (value ==&#39;用户名&#39;){value =&#39;&#39;}"
+                           type="text" value="用户名">
+                </label>
+                <h2 style="display: inline">密码</h2>
+                <span style="color: red; font-size: 1em" th:text="${ not #strings.isEmpty(message) ? message : ''}">Hello</span>
+                <label>
+                    <input class="txt_input" id="userpwd" name="password"
+                           onblur="if (value ==&#39;&#39;){value=&#39;******&#39;}"
+                           onfocus="if (value ==&#39;******&#39;){value =&#39;&#39;}"
+                           type="password" value="******">
+                </label>
+                <p class="forgot"><a href="javascript:void(0);" id="iforget">忘记密码</a></p>
+                <div class="rem_sub">
+                    <div class="rem_sub_l">
+                        <input id="save_me" name="checkbox" type="checkbox">
+                        <label for="checkbox">记住我 </label>
+                    </div>
+                    <label>
+                        <input class="sub_button" id="button" name="button" style="opacity: 0.7;" type="submit"
+                               value="登陆">
+                    </label>
+                </div>
+            </div>
+            <!--login_padding  Sign up end-->
+
+        </div>
+        <!--login_boder end-->
+    </form>
+</div>
+<!--login_m end-->
+</body>
+
+</html>

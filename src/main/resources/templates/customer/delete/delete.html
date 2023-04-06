@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- 用户信息界面的 新闻选项 -->
+<h3 class="heading3">新闻</h3>
+<div class="myaccountbox">
+    <ul>
+        <li>
+            <a href="#"> 订阅</a>
+            <a href="#"> 取消订阅</a>
+        </li>
+    </ul>
+</div>
+
+
+<!-- 用户注册界面的订阅选项 -->
+
+<h3 class="heading3">订阅相关</h3>
+<div class="registerbox">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label">订阅:</label>
+            <div class="controls">
+                <label class="checkbox inline">
+                    <input checked="checked" name="subscribe" type="radio" value="1">
+                    订阅 </label>
+                <label class="checkbox inline">
+                    <input name="subscribe" type="radio" value="0">
+                    不了 </label>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<div id="头">
+
+    <li><a href="#" th:class="${active=='blog' ? 'active' : ''}" th:href="@{/blog.html}">博客</a>
+        <div>
+            <ul>
+                <li><a href="blog.html">博客详情</a>
+                </li>
+                <li><a href="bloglist.html">博客列表</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+
+</div>
+
+</body>
+</html>

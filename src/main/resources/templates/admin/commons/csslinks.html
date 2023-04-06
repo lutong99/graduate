@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+    这里面都是管理员的前端的css导入, 这是所有管理员页面公共的, 所以将其放在了commons
+-->
+
+<div th:fragment="admincssimport">
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" th:href="@{/admin/assets/css/bootstrap.css}"/>
+    <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" th:href="@{/admin/assets/css/font-awesome.css}"/>
+    <!-- Morris Chart Styles-->
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet"
+          th:href="@{/admin/assets/js/morris/morris-0.4.3.min.css}"/>
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" th:href="@{/admin/assets/css/custom-styles.css}"/>
+    <!-- data Tables -->
+    <link href='assets/js/dataTables/dataTables.bootstrap.css' rel='stylesheet'
+          th:href="@{/admin/assets/js/dataTables/dataTables.bootstrap.css}" type='text/css'/>
+
+    <!-- Bootstrap core CSS -->
+    <!--    <link href="asserts/css/bootstrap.m.css" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}" rel="stylesheet">-->
+    <!--    <link href="asserts/css/bootstrap.min.css" rel="stylesheet" th:href="@{/admin/assets/css/bootstrap.m.css}">-->
+    <!-- Custom styles for this template -->
+    <!--    <link href="asserts/css/signin1.css" rel="stylesheet" th:href="@{/admin/assets/css/signin1.css}">-->
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- 这个是管理员界面的侧边栏, 我们用来做公共区域 -->
+<nav class="navbar-default navbar-side" role="navigation" th:fragment="adminsidebar">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+
+            <li>
+                <a class="active-menu" href="#"
+                   th:class="${active=='normal' || active=='vip' || active=='cList' ? 'active-menu' : ''}">
+                    <i class="fa fa-dashboard"></i> 客户列表<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#" th:class="${active != 'cList' ? '' : 'active-menu'}"
+                           th:href="@{/admin/customers/list}">所有客户</a>
+                    </li>
+                    <li>
+                        <a class="active-menu" href="#" th:class="${active != 'normal' ? '' : 'active-menu'}"
+                           th:href="@{/admin/customers/normal}">普通客户</a>
+                    </li>
+                    <li>
+                        <a href="#" th:class="${active != 'vip' ? '' : 'active-menu'}"
+                           th:href="@{/admin/customers/vip}">会员客户</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" th:class="${active=='backup' ? 'active-menu' : ''}"
+                   th:href="@{/admin/data/backup}"><i
+                        class="fa fa-desktop"></i> 数据相关<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a class="active-menu" href="#" th:class="${active != 'backup' ? '' : 'active-menu'}"
+                           th:href="@{/admin/data/backup}">备份&还原</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" th:class="${active=='products' || active=='hot' || active=='latest' ? 'active-menu' : ''}"
+                   th:href="@{/admin/products/list}"><i class="fa fa-bar-chart-o"></i> 演出相关<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a class="active-menu" href="#" th:class="${active != 'products' ? '' : 'active-menu'}"
+                           th:href="@{/admin/products/list}">演出列表</a>
+                    </li>
+                    <li>
+                        <a class="active-menu" href="#" th:class="${active != 'addProducts' ? '' : 'active-menu'}"
+                           th:href="@{/admin/products/add}">添加演出</a>
+                    </li>
+                    <li>
+                        <a href="#" th:class="${active != 'normalPro' ? '' : 'active-menu'}"
+                           th:href="@{/admin/products/normal}">有效演出列表</a>
+                    </li>
+                    <li>
+                        <a href="#" th:class="${active != 'hot' ? '' : 'active-menu'}" th:href="@{/admin/products/hot}">热门演出</a>
+                    </li>
+                    <li>
+                        <a href="#" th:class="${active != 'latest' ? '' : 'active-menu'}"
+                           th:href="@{/admin/products/latest}">最新演出</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" th:class="${active=='printInfo' || active=='statistics' ? 'active-menu' : ''}"
+                   th:href="@{/admin/info/print}"><i
+                        class="fa fa-qrcode"></i> 信息相关<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#" th:class="${active != 'statistics' ? '' : 'active-menu'}"
+                           th:href="@{/admin/info/statistics}">统计信息</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" th:class="${active=='message' || active=='messageDetails' ? 'active-menu' : ''}"
+                   th:href="@{/admin/message/list}"><i
+                        class="fa fa-table"></i> 论坛相关<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a class="active-menu" href="#" th:class="${active != 'message' ? '' : 'active-menu'}"
+                           th:href="@{/admin/message/list}">留言查看</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"
+                   th:class="${active=='orderProducts' || active=='saleProducts' || active=='cancelProducts' ? 'active-menu' : ''}"
+                   th:href="@{/admin/sale/order}"><i
+                        class="fa fa-edit"></i> 售票相关<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a class="active-menu" href="#" th:class="${active != 'orderProducts' ? '' : 'active-menu'}"
+                           th:href="@{/admin/sale/order}">订票管理</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" th:class="${active != 'index' ? '' : 'active-menu'}" th:href="@{/admin/index}"><i
+                        class="fa fa-fw fa-file"></i> 空白页</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+
+
+</body>
+</html>

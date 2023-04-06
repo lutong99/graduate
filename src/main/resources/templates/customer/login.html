@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>请在此登陆</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <div th:replace="~{customer/commons/csslinks::cssimport}"></div>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- fav -->
+    <link href="#" rel="shortcut icon" th:href="@{/static/assets/ico/favicon.html}">
+</head>
+<body>
+<!-- Header Start -->
+<div th:replace="~{customer/commons/header::header(active='myaccount')}"></div>
+<!-- Header End -->
+
+<div id="maincontainer">
+    <section id="product">
+        <div class="container">
+            <!--  breadcrumb -->
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#" th:href="@{/index.html}">首页</a>
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">登陆</li>
+            </ul>
+            <!-- Account Login-->
+            <div class="row">
+                <div class="span9">
+                    <h1 class="heading1"><span class="maintext">登陆</span><span class="subtext">首先在这里登陆并查看您的所有信息</span>
+                    </h1>
+                    <section class="newcustomer">
+                        <h2 class="heading2">新用户 </h2>
+                        <div class="loginbox">
+                            <h4 class="heading4"> 用户注册</h4>
+                            <p>创建一个账户, 你能更方便的进行购物, 并获得良好的购物体验, 还能查看您的历史消息.</p>
+                            <br>
+                            <p>注册后更有机会获取新人大礼包哦</p>
+                            <br>
+                            <br>
+                            <a class="btn btn-orange" href="#" th:href="@{/register.html}">注册</a>
+                        </div>
+                    </section>
+                    <section class="returncustomer">
+                        <h2 class="heading2">登陆 </h2>
+                        <div class="loginbox">
+                            <h4 class="heading4" style="color: red"
+                                th:text="${not #strings.isEmpty(message)}  ? ${message} : '在这里登陆'">
+                                我是老用户</h4>
+                            <!--                            <p style="color: red" th:if="${not #strings.isEmpty(message)}"-->
+                            <!--                               th:text="${message}">-->
+                            <form action="#" class="form-vertical" method="post" th:action="@{/login}">
+                                <fieldset>
+
+                                    </p>
+                                    <div class="control-group">
+                                        <label class="control-label">电子邮箱:</label>
+                                        <div class="controls">
+                                            <label>
+                                                <input class="span3" name="email" required="required" type="email">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">密码:</label>
+                                        <div class="controls">
+                                            <label>
+                                                <input class="span3" name="password" required="required"
+                                                       type="password">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <a class="" href="#">忘记密码?</a>
+                                    <br>
+                                    <br>
+                                    <!--<a class="btn btn-orange" href="#" th:form="">登陆</a>-->
+                                    <input class="btn btn-orange" type="submit" value="登陆">
+                                </fieldset>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar Start-->
+                <div th:replace="~{/customer/commons/accountside::sidebar}"></div>
+                <!-- Sidebar End-->
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{customer/commons/footer::footer}"></div>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<div th:replace="~{customer/commons/js::jsimport}"></div>
+</body>
+</html>

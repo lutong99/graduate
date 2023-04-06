@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <div th:replace="~{customer/commons/csslinks::cssimport}"></div>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- fav -->
+</head>
+<body>
+<!-- Header Start -->
+<div th:replace="~{customer/commons/header::header(active='index')}"></div>
+<!-- Header End -->
+
+
+<div id="maincontainer">
+    <!-- Slider Start-->
+    <section class="slider">
+        <div class="container">
+            <div class="flexslider" id="mainslider">
+                <ul class="slides">
+                    <li>
+                        <img alt="" src="img/banner1.jpg" th:src="@{/customer/img/wolf.jpg}"/>
+                    </li>
+                    <li>
+                        <img alt="" src="img/banner2.jpg" th:src="@{/customer/img/wallpaper.jpg}"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Slider End-->
+
+    <!-- Section Start-->
+    <section class="container otherddetails">
+        <div class="otherddetailspart">
+            <div class="innerclass free">
+                <h2>免费包邮</h2>
+                超过500元以上
+            </div>
+        </div>
+        <div class="otherddetailspart">
+            <div class="innerclass payment">
+                <h2>支付方便</h2>
+                支持多种付款方式
+            </div>
+        </div>
+        <div class="otherddetailspart">
+            <div class="innerclass shipping">
+                <h2>24小时之内送达</h2>
+                演出省内
+            </div>
+        </div>
+        <div class="otherddetailspart">
+            <div class="innerclass choice">
+                <h2>数千种选择</h2>
+                2,000+ 演出类型
+            </div>
+        </div>
+    </section>
+    <!-- Section End-->
+
+    <!-- Featured Product-->
+    <section class="row mt40" id="featured">
+        <div class="container">
+            <h1 class="heading1"><span class="maintext">热门演出</span><span
+                    class="subtext"> 看看最近有哪些热门演出</span>
+            </h1>
+            <ul class="thumbnails">
+
+                <li class="span3" th:each="latest:${session.productsLatest}">
+                    <a class="prdocutname" href="#" th:href="@{/showDetails(id=${latest.id})}"
+                       th:text="${latest.getpVenue()}">Product Name Here</a>
+                    <div class="thumbnail">
+                        <span class="sale tooltip-test">Sale</span>
+                        <a href="#"><img alt="" src="img/product1.jpg" th:src="product1+${latest.getpPath()}"></a>
+                        <div class="shortlinks">
+                            <a class="details" href="#" th:href="@{/showDetails(id=${latest.id})}" th:text="演出详情">DETAILS</a>
+                            <a class="wishlist" href="#" th:href="@{/addToWishList(id=${latest.id})}" th:text="想要">WISHLIST</a>
+                            <a class="compare" href="#" th:text="${latest.getpCategory()}">COMPARE</a>
+                        </div>
+                        <div class="pricetag">
+                            <span class="spiral"></span><a class="productcart" href="#"
+                                                           th:href="@{/addCart(id=${latest.id})}" th:text="加入购物车">ADD TO
+                            CART</a>
+                            <div class="price">
+                                <div class="pricenew" th:text="${latest.getpPrice()}">$4459.00</div>
+                                <div class="priceold" th:text="${latest.getpPrice() + latest.getRandomPrice()}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Latest Product-->
+    <!-- 最新的演出 -->
+    <section class="row" id="latest">
+        <div class="container">
+            <h1 class="heading1"><span class="maintext">最新演出</span><span class="subtext"> 来看一下最新的演出吧</span>
+            </h1>
+            <ul class="thumbnails">
+                <li class="span3" th:each="product:${session.productsHot}">
+                    <a class="prdocutname" href="#" th:href="@{/showDetails(id=${product.id})}"
+                       th:text="${product.getpVenue()}">Product Name Here</a>
+                    <div class="thumbnail">
+                        <a href="#"><img alt="" src="img/product1a.jpg"
+                                         th:src="product1a + ${product.getpPath()}"></a>
+                        <div class="shortlinks">
+                            <a class="details" href="#" th:href="@{/showDetails(id=${product.id})}" th:text="演出详情">DETAILS</a>
+                            <a class="wishlist" href="#" th:href="@{/addToWishList(id=${product.id})}" th:text="想要">WISHLIST</a>
+                            <a class="compare" href="#" th:text="${product.getpCategory()}">COMPARE</a>
+                        </div>
+                        <div class="pricetag">
+                            <span class="spiral"></span><a class="productcart" href="#"
+                                                           th:href="@{/addCart(id=${product.id})}" th:text="加入购物车">ADD
+                            TO CART</a>
+                            <div class="price">
+                                <div class="pricenew" th:text="${product.pPrice}">$4459.00</div>
+                                <div class="priceold" th:text="${product.pPrice + product.randomPrice}">
+                                    $5000.00
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup-->
+    <hr>
+    <section class="mt40" id="newslettersignup">
+        <div class="container">
+            <div class="pull-left newsletter">
+                <h2> 注册我们</h2>
+                注册我们可以享受购票提醒功能, 并且老用户由折扣哦
+            </div>
+            <div class="pull-right">
+                <form class="form-horizontal">
+                    <div class="input-prepend">
+                        <label for="inputIcon"></label><input class="input-xlarge" id="inputIcon"
+                                                              placeholder="Subscribe to Newsletter"
+                                                              th:placeholder="在这里输入用户名进行注册哦" type="text">
+                        <input class="btn btn-orange" th:value="注册" type="submit" value="Subscribe">
+                        注册
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- /maincontainer -->
+
+<!-- Footer -->
+<div th:replace="~{customer/commons/footer::footer}"></div>
+
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<div th:replace="~{customer/commons/js::jsimport}"></div>
+</body>
+</html>

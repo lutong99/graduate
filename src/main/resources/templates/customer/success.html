@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>感谢反馈</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <div th:replace="~{customer/commons/csslinks::cssimport}"></div>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- fav -->
+</head>
+<body>
+<!-- Header Start -->
+<div th:replace="~{customer/commons/header::header(active='contact')}"></div>
+<!-- Header End -->
+
+
+<div id="maincontainer">
+    <!-- Newsletter Signup-->
+    <center><h1>感谢您的反馈，我们会酌情采纳您的建议</h1></center>
+
+
+    <hr>
+    <section class="mt40" id="newslettersignup">
+        <div class="container">
+            <div class="pull-left newsletter">
+                <h2> 注册我们</h2>
+                注册我们可以享受购票提醒功能, 并且老用户由折扣哦
+            </div>
+            <div class="pull-right">
+                <form class="form-horizontal">
+                    <div class="input-prepend">
+                        <label for="inputIcon"></label><input class="input-xlarge" id="inputIcon"
+                                                              placeholder="Subscribe to Newsletter"
+                                                              th:placeholder="在这里输入用户名进行注册哦" type="text">
+                        <input class="btn btn-orange" th:value="注册" type="submit" value="Subscribe">
+                        注册
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- /maincontainer -->
+
+<!-- Footer -->
+<div th:replace="~{customer/commons/footer::footer}"></div>
+
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<div th:replace="~{customer/commons/js::jsimport}"></div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- 这个是管理员界面上面的导航栏, 显示用户的姓名以及个人信息的一些按钮 -->
+
+<nav class="navbar navbar-default top-navbar" role="navigation" th:fragment="adminnavbar">
+    <div class="navbar-header">
+        <button class="navbar-toggle" data-target=".sidebar-collapse" data-toggle="collapse" type="button">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#" th:text="${session.admin.username}"></a>
+    </div>
+
+    <ul class="nav navbar-top-links navbar-right">
+        <!-- /.dropdown -->
+        <!-- /.dropdown -->
+        <li class="dropdown">
+            <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                <li><a href="#" th:href="@{/adminInfo}"><i class="fa fa-user fa-fw"></i> 管理员信息</a>
+                </li>
+                <li><a href="#" th:href="@{/admin/update}"><i class="fa fa-gear fa-fw"></i> 管理员设置</a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="#" th:href="@{/adminLogout}"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                </li>
+            </ul>
+            <!-- /.dropdown-user -->
+        </li>
+        <!-- /.dropdown -->
+    </ul>
+</nav>
+</body>
+</html>

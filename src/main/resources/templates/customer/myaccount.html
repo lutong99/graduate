@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>个人账户</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <div th:replace="~{customer/commons/csslinks::cssimport}"></div>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- fav -->
+    <link href="#" rel="shortcut icon">
+</head>
+<body>
+<!-- Header Start -->
+<div th:replace="~{customer/commons/header::header(active='myaccount')}"></div>
+<!-- Header End -->
+
+<div id="maincontainer">
+    <section id="product">
+        <div class="container">
+            <!--  breadcrumb -->
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#" th:href="@{/index.html}">首页</a>
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">我的账户</li>
+            </ul>
+            <div class="row">
+
+                <!-- My Account-->
+                <div class="span9">
+                    <h1 class="heading1"><span class="maintext">我的账户信息</span><span class="subtext">在这里执行您账户的所有操作</span>
+                    </h1>
+                    <h3 class="heading3">我的账户</h3>
+                    <div class="myaccountbox">
+                        <ul>
+                            <li>
+                                <a href="#" th:href="@{/edit}">编辑账户的所有信息</a>
+                            </li>
+                            <li>
+                                <a href="#" th:href="@{/change}">修改密码</a>
+                            </li>
+                            <li>
+                                <a href="#" th:href="@{/wishlist}">调整愿望清单</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="myaccountbox">
+                        <ul>
+                            <li>
+                                <a href="#" th:href="@{/showOrders}"> 查看订单</a>
+                            </li>
+                            <li>
+                                <a href="#"> 查看下载</a>
+                            </li>
+                            <li>
+                                <a href="#">查看积分</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+
+                <!-- Sidebar Start-->
+                <div th:replace="~{/customer/commons/accountside::sidebar}"></div>
+                <!-- Sidebar End-->
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{customer/commons/footer::footer}"></div>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<div th:replace="~{customer/commons/js::jsimport}"></div>
+</body>
+</html>

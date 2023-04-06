@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>用户信息更新</title>
+    <link th:replace="~{admin/commons/csslinks::admincssimport}"/>
+</head>
+
+<body>
+<div id="wrapper">
+    <div th:replace="admin/commons/navbar::adminnavbar"></div>
+    <!--/. NAV TOP  -->
+    <div th:replace="admin/commons/sidebar::adminsidebar(active='space')"></div>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        用户修改
+                        <small>在这里修改用户信息</small>
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="col-lg-8 panel panel-default">
+                        <div class="panel-heading">
+                            修改用户信息
+                        </div>
+                        <div class="panel-body">
+                            <div class="row col-lg-12">
+                                <form action="" method="post" th:action="@{/admin/submitUpdateCustomer}">
+                                    <div class="form-group">
+                                        <span>用户ID</span>
+                                        <input class="form-control" name="id"
+                                               placeholder="Enter text" readonly="readonly"
+                                               th:value="${customer.id}">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>用户姓名</span>
+                                        <input class="form-control" name="username" placeholder="Enter text"
+                                               th:value="${customer.lastName + customer.firstName}"
+                                        >
+                                        <!--                                        -->
+                                    </div>
+                                    <div class="form-group">
+                                        <span>用户邮箱</span>
+                                        <input class="form-control" name="email"
+                                               placeholder="Enter text" th:value="${customer.email}"
+                                               type="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>用户手机号码</span>
+                                        <input class="form-control" name="phone" placeholder="Enter text"
+                                               th:value="${customer.phone}"
+                                               type="tel">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>用户生日</span>
+                                        <input class="form-control" name="birthday" placeholder="Enter text"
+                                               th:value="${customer.birthday}"
+                                               type="date">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>用户的公司</span>
+                                        <input class="form-control" name="company" placeholder="Enter text"
+                                               th:value="${customer.company}">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>用户城市</span>
+                                        <input class="form-control" name="city" placeholder="Enter text"
+                                               th:value="${customer.city}">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>注册时间</span>
+                                        <input class="form-control" name="registerTime" placeholder="Enter text"
+                                               readonly="readonly"
+                                               th:value="${customer.registerTime}">
+                                    </div>
+                                    <div class="form-group">
+                                        <span>VIP</span>
+                                        <input class="form-control" name="vip" placeholder="Enter text"
+                                               th:value="${customer.vip}">
+                                    </div>
+                                    <button class="btn btn-default" type="submit">提交</button>
+                                </form>
+                                <!-- /.col-lg-6 (nested) -->
+
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /. ROW  -->
+            <footer>
+            </footer>
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+</div>
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<div th:replace="~{admin/commons/jsimport::adminjsimport}"></div>
+
+
+</body>
+
+</html>

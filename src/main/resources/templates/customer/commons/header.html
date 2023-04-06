@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--  -->
+<header th:fragment="header">
+    <div class="headerstrip">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <a class="logo pull-left" href="index.html">
+                        <img alt="SimpleOne" src="img/logo.png" th:src="@{/customer/img/logo.png}"
+                             title="SimpleOne"></a>
+                    <!-- Top Nav Start -->
+                    <div class="pull-left">
+                        <div class="navbar" id="topnav">
+                            <div class="navbar-inner">
+                                <ul class="nav">
+                                    <li><a class="home" href="#" th:class="${active=='index' ? 'home active' : 'home'}"
+                                           th:href="@{/index}">主页</a>
+                                    </li>
+                                    <li><a class="myaccount" href="#"
+                                           th:class="${active=='myaccount' ? 'myaccount active' : 'myaccount'}"
+                                           th:href="@{/account}"
+                                    >我的账户</a>
+                                    </li>
+                                    <li><a class="shoppingcart" href="#"
+                                           th:class="${active=='shoppingcart' ? 'shoppingcart active' : 'shoppingcart'}"
+                                           th:href="@{/shopcart}">购物车</a>
+                                    </li>
+                                    <li><a class="wishlist"
+                                           href="#" th:class="${active=='wishlist' ? 'checkout active' : 'checkout'}"
+                                           th:href="@{/wishlist}">愿望清单</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Top Nav End -->
+                    <div class="pull-right">
+                        <form class="form-search top-search">
+                            <label>
+                                <input class="input-medium search-query" placeholder="在这里搜索" type="text"/>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="categorymenu">
+            <nav class="subnav">
+                <ul class="nav-pills categorymenu">
+                    <li><a href="#" th:class="${active=='index' ? 'active' : ''}" th:href="@{/index.html}">首页</a>
+                    </li>
+                    <li><a href="#" th:class="${active=='category' ? 'active' : ''}" th:href="@{/category}">分类</a>
+                    </li>
+                    <li><a href="#" th:class="${active=='shoppingcart' ? 'active' : ''}"
+                           th:href="@{/shopping-cart.html}">购物车</a>
+                    </li>
+                    <li><a href="#" th:class="${active=='order' ? 'checkout active' : 'checkout'}"
+                           th:href="@{/showOrders}">订单</a>
+                    </li>
+
+                    <li><a href="#" th:class="${active=='checkout' ? 'active' : ''}" th:href="@{/checkout.html}">结账单</a>
+                    </li>
+                    <li><a href="#" th:class="${active=='wishlist' ? 'checkout active' : 'checkout'}"
+                           th:href="@{/wishlist}">愿望清单</a>
+                    </li>
+
+                    <li><a href="#" th:class="${active=='myaccount' ? 'active' : ''}"
+                           th:href="@{/myaccount.html}">我的账户</a>
+                        <div>
+                            <ul>
+                                <li><a href="#" th:href="@{/myaccount.html}">我的账户</a>
+                                </li>
+                                <li><a href="#" th:href="@{/login.html}">登陆</a>
+                                </li>
+                                <li><a href="#" th:href="@{/register.html}">注册</a>
+                                </li>
+                                <li><a href="#" th:href="@{/wishlist.html}">愿望清单</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#" th:class="${active=='contact' ? 'active' : ''}" th:href="@{/contact.html}">联系我们</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+
+<!-- 中间的导航栏 -->
+<div class="headerdetails">
+    <div class="pull-left">
+        <ul class="nav language pull-left">
+            <li class="dropdown hover">
+                <a class="dropdown-toggle" data-toggle="" href="#">US Doller <b class="caret"></b></a>
+                <ul class="dropdown-menu currency">
+                    <li><a href="#">US Doller</a>
+                    </li>
+                    <li><a href="#">Euro </a>
+                    </li>
+                    <li><a href="#">British Pound</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown hover">
+                <a class="dropdown-toggle" data-toggle="" href="#">English <b class="caret"></b></a>
+                <ul class="dropdown-menu language">
+                    <li><a href="#">English</a>
+                    </li>
+                    <li><a href="#">Spanish</a>
+                    </li>
+                    <li><a href="#">German</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    <div class="pull-right">
+        <ul class="nav topcart pull-left">
+            <li class="dropdown hover carticon ">
+                <a class="dropdown-toggle" href="#"> Shopping Cart <span
+                        class="label label-orange font14">1 item(s)</span>
+                    - $589.50 <b class="caret"></b></a>
+                <ul class="dropdown-menu topcartopen ">
+                    <li>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td class="image"><a href="product.html"><img alt="product" height="50"
+                                                                              src="img/prodcut-40x40.jpg"
+                                                                              title="product" width="50"></a>
+                                </td>
+                                <td class="name"><a href="product.html">MacBook</a></td>
+                                <td class="quantity">x&nbsp;1</td>
+                                <td class="total">$589.50</td>
+                                <td class="remove"><i class="icon-remove"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="image"><a href="product.html"><img alt="product" height="50"
+                                                                              src="img/prodcut-40x40.jpg"
+                                                                              title="product" width="50"></a>
+                                </td>
+                                <td class="name"><a href="product.html">MacBook</a></td>
+                                <td class="quantity">x&nbsp;1</td>
+                                <td class="total">$589.50</td>
+                                <td class="remove"><i class="icon-remove "></i></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td class="textright"><b>Sub-Total:</b></td>
+                                <td class="textright">$500.00</td>
+                            </tr>
+                            <tr>
+                                <td class="textright"><b>Eco Tax (-2.00):</b></td>
+                                <td class="textright">$2.00</td>
+                            </tr>
+                            <tr>
+                                <td class="textright"><b>VAT (17.5%):</b></td>
+                                <td class="textright">$87.50</td>
+                            </tr>
+                            <tr>
+                                <td class="textright"><b>Total:</b></td>
+                                <td class="textright">$589.50</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="well pull-right buttonwrap">
+                            <a class="btn btn-orange" href="#">View Cart</a>
+                            <a class="btn btn-orange" href="#">Checkout</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>

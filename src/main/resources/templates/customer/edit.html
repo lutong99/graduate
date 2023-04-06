@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>修改用户信息</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <div th:replace="~{customer/commons/csslinks::cssimport}"></div>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- 三级联动的数据 -->
+    <script th:src="@{/customer/data/cities.js}"></script>
+    <!-- fav -->
+    <link href="assets/ico/favicon.html" rel="shortcut icon" th:href="@{/static/assets/ico/favicon.html}">
+</head>
+<body>
+<!-- Header Start -->
+<div th:replace="~{customer/commons/header::header(active='myaccount')}"></div>
+<!-- Header End -->
+
+<div id="maincontainer">
+    <section id="product">
+        <div class="container">
+            <!--  breadcrumb -->
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#" th:href="@{/index.html}">首页</a>
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">修改用户信息</li>
+            </ul>
+            <div class="row">
+                <!-- Register Account-->
+                <div class="span9">
+                    <h1 class="heading1"><span class="maintext">修改用户信息</span><span class="subtext">在这里修改用户的详细信息</span>
+                    </h1>
+                    <form class="form-horizontal" method="post" th:action="@{/updateUser}">
+                        <a href="#" th:href="@{/login.html}" style="color: red; font-size: 2em"
+                           th:if="${not #strings.isEmpty(message)}" th:text="${message}"></a>
+                        <h3 class="heading3">个人信息</h3>
+                        <div class="registerbox">
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label"><span class="red">*</span> 名字: </label>
+                                    <div class="controls">
+                                        <label>
+                                            <input class="input-xlarge required" required="required" th:name="firstName"
+                                                   th:value="${session.customer.firstName}"
+                                                   type="text"/>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label"><span class="red">*</span> 姓氏: </label>
+                                    <div class="controls">
+                                        <label>
+                                            <input class="input-xlarge required" required="required" th:name="lastName"
+                                                   th:value="${session.customer.lastName}"
+                                                   type="text"/>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label"><span class="red">*</span> 邮箱: </label>
+                                    <div class="controls">
+                                        <label>
+                                            <input class="input-xlarge required" id="email" readonly="readonly"
+                                                   required="required"
+                                                   th:name="email"
+                                                   th:value="${session.customer.email}"
+                                                   type="email"/>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label"><span class="red">*</span> 手机: </label>
+                                    <div class="controls">
+                                        <label>
+                                            <input class="input-xlarge required" required="required" th:name="phone"
+                                                   th:value="${session.customer.phone}"
+                                                   type="tel">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label"><span class="red">*</span> 生日: </label>
+                                    <label>
+                                        <input name="birthday" th:value="${session.customer.birthday}" type="date">
+                                    </label>
+                                </div>
+
+                            </fieldset>
+                        </div>
+                        <h3 class="heading3">你的地址信息</h3>
+                        <div class="registerbox">
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label"> 公司:</label>
+                                    <div class="controls">
+                                        <label>
+                                            <input class="input-xlarge" name="company"
+                                                   th:value="${session.customer.company}" type="text">
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">
+                                        <span class="red">*</span> 城市:</label>
+                                    <div class="controls">
+                                        <label>
+                                            <select name="PurchaseProvince"
+                                                    style="width: auto">
+                                                <option th:value="${session.customer.city.split('-')[0]}">
+                                                    [[${session.customer.city.split('-')[0]}]]
+                                                </option>
+                                            </select>
+                                            <select name="PurchaseCity" style="width: auto">
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </div>
+
+                        <div class="pull-right">
+                            我已经阅读并同意相关 <a href="#">协议</a>
+                            <input class="btn btn-orange" id="submit" type="Submit" value="确认"/><br>
+                            <input id="confirm" type="hidden">
+                            <a href="#" th:href="@{/login.html}" style="color: red; font-size: 2em"
+                               th:if="${not #strings.isEmpty(message)}" th:text="${message}"></a>
+                        </div>
+                    </form>
+                    <div class="clearfix"></div>
+                    <br>
+                </div>
+                <!-- Sidebar Start-->
+                <div th:replace="~{/customer/commons/accountside::sidebar}"></div>
+                <!-- Sidebar End-->
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{customer/commons/footer::footer}"></div>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<div th:replace="~{customer/commons/js::jsimport}"></div>
+<!-- 城市的三级联动 -->
+<script type="text/javascript">
+
+    $(function () {
+        var purchaseCity = $('select[name="PurchaseCity"]'), purchaseProvince = purchaseCity.prev(),
+            purchaseArea = $('select[name="PurchaseArea"]');
+        //加载省份下拉框选项
+        for (var i in cities) {
+            purchaseProvince.append('<option>' + i + '</option>');
+        }
+        //根据省份下拉框值，加载相应的城市下拉框选项，并定位地图中心点
+        purchaseProvince.change(function () {
+            var s = cities[this.value];
+            purchaseCity.html('');
+            for (var i in s) {
+                purchaseCity.append('<option>' + i + '</option>');
+            }
+            purchaseCity.change();
+            map.centerAndZoom(s[0]);
+        });
+        purchaseProvince.change();
+
+        //根据城市获取省份
+        function getState(city) {
+            for (var i in cities) {
+                var c = cities[i];
+                for (var j in c) {
+                    if (c[j] === city) {
+                        return i;
+                    }
+                }
+            }
+        }
+    });
+
+
+</script>
+
+<!-- 密码确认 -->
+<script>
+
+    $("#repeatPass").blur(function () {
+        // $(this).title("Hello");
+        var val = $("#pass").val();
+        var val1 = $(this).val();
+
+        if (val !== val1) {
+            $("#passtest").text("两次密码不一致");
+            $("#submit").bind('click', function (e) {
+                e.preventDefault();
+            }, false);
+        } else if (val === val1) {
+            $("#passtest").text("");
+            var su = $("#submit")[0];
+            // $("#confirm").after("<input class='btn btn-orange' id='submit' type='submit' value='确认'/>");
+            $("#submit").unbind('click');
+        }
+    });
+
+</script>
+
+<script>
+
+    $("#cityset").text("Helloworld");
+
+</script>
+
+
+</body>
+</html>

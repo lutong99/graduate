@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<head th:fragment="cssimport">
+    <link href='#css?family=Open+Sans:400,300italic,400italic,600,600italic'
+          rel='stylesheet'
+          type='text/css'>
+    <link href='#css?family=Crete+Round' rel='stylesheet'
+          type='text/css'>
+    <link href="css/bootstrap.css" rel="stylesheet" th:href="@{/customer/css/bootstrap.css}">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet" th:href="@{/customer/css/bootstrap-responsive.css}">
+    <link href="css/style.css" rel="stylesheet" th:href="@{/customer/css/style.css}">
+    <link href="css/flexslider.css" media="screen" rel="stylesheet" th:href="@{/customer/css/flexslider.css}"
+          type="text/css"/>
+    <link href="css/jquery.fancybox.css" rel="stylesheet" th:href="@{/customer/css/jquery.fancybox.css}">
+    <link href="css/cloud-zoom.css" rel="stylesheet" th:href="@{/customer/css/cloud-zoom.css}">
+</head>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>会员客户</title>
+    <link th:replace="~{admin/commons/csslinks::admincssimport}"/>
+</head>
+
+<body>
+<div id="wrapper">
+    <div th:replace="admin/commons/navbar::adminnavbar"></div>
+    <!--/. NAV TOP  -->
+    <div th:replace="admin/commons/sidebar::adminsidebar(active='normal')"></div>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        用户列表
+                        <small>这里是VIP用户列表</small>
+                    </h1>
+                </div>
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading" th:text="用户列表">
+                            Advanced Tables
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover"
+                                       id="dataTables-example">
+                                    <thead>
+                                    <tr>
+                                        <th th:text="'#'">Rendering engine</th>
+                                        <th th:text="姓名">Browser</th>
+                                        <th th:text="邮箱">Platform(s)</th>
+                                        <th th:text="手机号码">Engine version</th>
+                                        <th th:text="生日">CSS grade</th>
+                                        <th th:text="公司">CSS grade</th>
+                                        <th th:text="城市">CSS grade</th>
+                                        <th th:text="注册时间">CSS grade</th>
+                                        <th th:text="vip">CSS grade</th>
+                                        <th th:text="选项"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="gradeA" th:each="customer:${vips}">
+                                        <td th:text="${customer.id}">Gecko</td>
+                                        <td th:text="${customer.lastName + customer.firstName}">Mozilla 1.6</td>
+                                        <td th:text="${customer.email}">Win 95+ / OSX.1+</td>
+                                        <td th:text="${customer.phone}">1.6</td>
+                                        <td th:text="${customer.birthday}">A</td>
+                                        <td th:text="${customer.company}">A</td>
+                                        <td th:text="${customer.city}">A</td>
+                                        <td th:text="${customer.registerTime}">A</td>
+                                        <td th:text="${customer.vip}">A</td>
+                                        <td>
+                                            <a class="btn btn-small btn-default" href="#"
+                                               th:href="@{/admin/updateCustomer(id=${customer.id})}">修改</a>
+                                            <a class="btn btn-small btn-danger" href="#"
+                                               th:href="@{/admin/deleteCustomer(id=${customer.id})}">删除</a>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+
+            <footer>
+            </footer>
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+
+</div>
+</body>
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<div th:replace="~{admin/commons/jsimport::adminjsimport}"></div>
+
+</html>
